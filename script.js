@@ -1,63 +1,48 @@
-const openMenuBtn = document.getElementById("openMenu");
-const navMenuBtn = document.getElementById("navMenuBtn");
-const homeBtn = document.getElementById("homeBtn");
-const closeMenuBtn = document.getElementById("closeMenu");
+// DOM Element Selectors
 const menuOverlay = document.getElementById("menuOverlay");
-const menuLinks = document.querySelectorAll(".menu-links a");
+const openMenuBtn = document.getElementById("openMenu"); // Main Learn More Button
+const navMenuBtn = document.getElementById("navMenuBtn"); // Top Nav Menu Button
+const closeMenuBtn = document.getElementById("closeMenu");
+const links = document.querySelectorAll(".menu-links a");
 const carousels = document.querySelectorAll(".photo-carousel");
 const activityTrigger = document.getElementById("activityTrigger");
 const activitySubMenu = document.getElementById("activitySubMenu");
 
-function resetAnimations() {
-  const animatedElements = document.querySelectorAll(".fade-in-down");
-  animatedElements.forEach((el) => {
-    el.style.animation = "none";
-    el.offsetHeight;
-    el.style.animation = null;
+// Functions to Open/Close Menu
+const openMenu = () => menuOverlay.classList.add("active");
+const closeMenu = () => menuOverlay.classList.remove("active");
+
+// Event Listeners for Opening/Closing
+if (openMenuBtn) openMenuBtn.addEventListener("click", openMenu);
+if (navMenuBtn) navMenuBtn.addEventListener("click", openMenu);
+if (closeMenuBtn) closeMenuBtn.addEventListener("click", closeMenu);
+
+// Logic to Switch Photo Carousels in Menu on Hover
+links.forEach((link) => {
+  link.addEventListener("mouseenter", () => {
+    const section = link.getAttribute("data-section");
+
+    // Hide all carousels first
+    carousels.forEach((c) => c.classList.remove("active"));
+
+    // Show the carousel matching the data-section attribute
+    const target = document.getElementById(`carousel-${section}`);
+    if (target) {
+      target.classList.add("active");
+    }
+  });
+});
+
+// Toggle Sub-menu for Activity section
+if (activityTrigger && activitySubMenu) {
+  activityTrigger.addEventListener("click", (e) => {
+    e.preventDefault(); // Stop page from jumping
+    activitySubMenu.classList.toggle("open"); // Toggles the 'open' class used in CSS
+    activityTrigger.classList.toggle("active-link");
   });
 }
 
-const toggleMenu = (show) => {
-  menuOverlay.classList.toggle("active", show);
-  if (!show) activitySubMenu.classList.remove("open");
-};
-
-openMenuBtn.addEventListener("click", () => toggleMenu(true));
-navMenuBtn.addEventListener("click", () => toggleMenu(true));
-closeMenuBtn.addEventListener("click", () => toggleMenu(false));
-homeBtn.addEventListener("click", () => {
-  toggleMenu(false);
-  resetAnimations();
-});
-
-// Activity Submenu Toggle
-activityTrigger.addEventListener("click", (e) => {
-  e.preventDefault();
-  activitySubMenu.classList.toggle("open");
-});
-
-// Carousel Switching
-menuLinks.forEach((link) => {
-  link.addEventListener("mouseenter", () => {
-    const section = link.getAttribute("data-section");
-    if (!section) return;
-
-    menuLinks.forEach((l) => l.classList.remove("active-link"));
-    carousels.forEach((c) => c.classList.remove("active"));
-
-    link.classList.add("active-link");
-    const targetCarousel = document.getElementById(`carousel-${section}`);
-    if (targetCarousel) targetCarousel.classList.add("active");
-  });
-});
-
-document.querySelectorAll(".carousel-track").forEach((track) => {
-  track.addEventListener(
-    "mouseenter",
-    () => (track.style.animationPlayState = "paused"),
-  );
-  track.addEventListener(
-    "mouseleave",
-    () => (track.style.animationPlayState = "running"),
-  );
+// Optional: Close menu if clicking outside container
+menuOverlay.addEventListener("click", (e) => {
+  if (e.target === menuOverlay) closeMenu();
 });
