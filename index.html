@@ -7,33 +7,143 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <nav class="top-nav">
+      <button class="nav-btn" id="homeBtn">Home</button>
+      <button class="nav-btn" id="navMenuBtn">Menu</button>
+    </nav>
+
     <div class="menu-overlay" id="menuOverlay">
       <button class="close-menu" id="closeMenu">&times;</button>
-      <nav class="menu-content">
-        <a href="#">Family</a>
-        <a href="#">Friends</a>
-        <a href="#">Activity</a>
-        <a href="#">Gala Galore</a>
-      </nav>
+
+      <div class="menu-container">
+        <nav class="menu-links">
+          <a href="#" data-section="family">Family</a>
+          <a href="#" data-section="friends">Friends</a>
+          <div class="nested-trigger">
+            <a href="#" data-section="activity" id="activityTrigger"
+              >Activity <span>&rarr;</span></a
+            >
+            <div class="sub-menu" id="activitySubMenu">
+              <a href="#" data-section="prelim">Prelim</a>
+              <a href="#" data-section="midterm">Midterm</a>
+              <a href="#" data-section="prefinal">Prefinal</a>
+              <a href="#" data-section="final">Final</a>
+            </div>
+          </div>
+          <a href="#" data-section="gala">Gala Galore</a>
+        </nav>
+
+        <div class="menu-visuals">
+          <div class="photo-carousel active" id="carousel-family">
+            <div class="photo-track">
+              <img
+                src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800"
+                alt="Family"
+              /><img
+                src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800"
+                alt="Family"
+              />
+            </div>
+          </div>
+          <div class="photo-carousel" id="carousel-friends">
+            <div class="photo-track">
+              <img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800"
+                alt="Friends"
+              /><img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800"
+                alt="Friends"
+              />
+            </div>
+          </div>
+          <div class="photo-carousel" id="carousel-activity">
+            <div class="photo-track">
+              <img
+                src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800"
+                alt="Activity"
+              /><img
+                src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800"
+                alt="Activity"
+              />
+            </div>
+          </div>
+
+          <div class="photo-carousel" id="carousel-prelim">
+            <div class="photo-track">
+              <img src="images/prelim1.jpg" alt="Prelim" /><img
+                src="images/prelim1.jpg"
+                alt="Prelim"
+              />
+            </div>
+          </div>
+          <div class="photo-carousel" id="carousel-midterm">
+            <div class="photo-track">
+              <img src="images/midterm1.jpg" alt="Midterm" /><img
+                src="images/midterm1.jpg"
+                alt="Midterm"
+              />
+            </div>
+          </div>
+          <div class="photo-carousel" id="carousel-prefinal">
+            <div class="photo-track">
+              <img src="images/prefinal1.jpg" alt="Prefinal" /><img
+                src="images/prefinal1.jpg"
+                alt="Prefinal"
+              />
+            </div>
+          </div>
+          <div class="photo-carousel" id="carousel-final">
+            <div class="photo-track">
+              <img src="images/final1.jpg" alt="Final" /><img
+                src="images/final1.jpg"
+                alt="Final"
+              />
+            </div>
+          </div>
+
+          <div class="photo-carousel" id="carousel-gala">
+            <div class="photo-track">
+              <img
+                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800"
+                alt="Gala"
+              /><img
+                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800"
+                alt="Gala"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="main-container">
-      <div class="left-side">
+      <div class="left-side fade-in-down" style="animation-delay: 0.1s">
         <img
           src="images/MyPicture.jpg"
           alt="Will Diether Arinsol"
           class="profile-img"
         />
       </div>
-
       <div class="right-side">
         <div class="content-wrapper">
-          <div class="accent-line"></div>
-          <h1>Meet <br /><span>Will Diether Arinsol</span></h1>
-
-          <button class="learn-more-btn" id="openMenu">Learn More</button>
-
-          <div class="carousel-section">
+          <div
+            class="accent-line fade-in-down"
+            style="animation-delay: 0.2s"
+          ></div>
+          <h1 class="fade-in-down" style="animation-delay: 0.3s">
+            Meet <br /><span>Will Diether Arinsol</span>
+          </h1>
+          <button
+            class="learn-more-btn fade-in-down"
+            id="openMenu"
+            style="animation-delay: 0.4s"
+          >
+            Learn More
+          </button>
+          <div
+            class="carousel-section fade-in-down"
+            style="animation-delay: 0.5s"
+          >
             <span class="carousel-label">Development Stack</span>
             <div class="carousel-wrapper">
               <div class="carousel-track">
@@ -100,78 +210,9 @@
               </div>
             </div>
           </div>
-
-          <div class="carousel-section">
-            <span class="carousel-label">Creative Design</span>
-            <div class="carousel-wrapper">
-              <div class="carousel-track">
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/adobephotoshop/31A8FF"
-                    alt="Photoshop"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/figma/F24E1E"
-                    alt="Figma"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/adobecreativecloud/DA1E5E"
-                    alt="Creative Cloud"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/canva/00C4CC"
-                    alt="Canva"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/adobelightroom/31A8FF"
-                    alt="Lightroom"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/adobephotoshop/31A8FF"
-                    alt="Photoshop"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/figma/F24E1E"
-                    alt="Figma"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/adobecreativecloud/DA1E5E"
-                    alt="Creative Cloud"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/canva/00C4CC"
-                    alt="Canva"
-                  />
-                </div>
-                <div class="skill-item">
-                  <img
-                    src="https://cdn.simpleicons.org/adobelightroom/31A8FF"
-                    alt="Lightroom"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
